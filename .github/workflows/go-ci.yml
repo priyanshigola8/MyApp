@@ -21,7 +21,10 @@ jobs:
 
       - name: Install dependencies
         run: go mod download
-
+        
+      - name: Verify dependencies
+        run: go mod verify
+   
       - name: Run tests
         run: go test ./...
 
