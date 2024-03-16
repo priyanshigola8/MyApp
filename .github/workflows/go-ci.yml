@@ -20,7 +20,7 @@ jobs:
           go-version: 1.16
 
       - name: Install dependencies
-        run: go mod download
+        run: go mod download all
         
       - name: Verify dependencies
         run: go mod verify
