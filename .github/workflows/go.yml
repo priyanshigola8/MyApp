@@ -32,7 +32,9 @@ jobs:
         go mod verify
 
     - name: Run tests
-      run: go test ./...
+      run: |
+        cd go
+        go test ./...
 
     - name: Lint code
       run: golangci-lint run ./Go
