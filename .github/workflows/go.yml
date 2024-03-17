@@ -40,5 +40,7 @@ jobs:
         go test ./...
 
     - name: Lint code
-      run: golangci-lint run ./go
+      run: |
+        cd go
+        golangci-lint run ./go
 
