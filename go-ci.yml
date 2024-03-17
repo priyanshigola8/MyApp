@@ -1,4 +1,4 @@
-name: Go CI
+ame: Go CI
 
 on:
   push:
