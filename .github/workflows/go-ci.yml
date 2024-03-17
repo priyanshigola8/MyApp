@@ -11,6 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check current directory
+        run: |
+          pwd
+          ls -al
+
       - name: Checkout repository
         uses: actions/checkout@v2
 
@@ -21,8 +26,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pwd
-          ls
           cd go
           go mod download
 
@@ -32,7 +35,7 @@ jobs:
           go mod verify
 
       - name: Run tests
-        run: go test ./Go/...
+        run: go test ./...
 
       - name: Lint code
         run: golangci-lint run ./Go
