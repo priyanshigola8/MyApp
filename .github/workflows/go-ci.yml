@@ -21,12 +21,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd Go
+          cd go
           go mod download
 
       - name: Verify dependencies
         run: |
-          cd Go
+          cd go
           go mod verify
 
       - name: Run tests
