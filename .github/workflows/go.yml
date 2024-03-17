@@ -24,7 +24,7 @@ jobs:
     - name: Install golangci-lint
       run: |
         curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $GOPATH/bin v1.41.1
-      
+        echo "::add-path::$GOPATH/bin"
   
     - name: Install dependencies
       run: |
@@ -42,7 +42,5 @@ jobs:
         go test ./...
 
     - name: Lint code
-      run: |
-        cd go
-        golangci-lint run ./go
+      run: golangci-lint run ./go
 
