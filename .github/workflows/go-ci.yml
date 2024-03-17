@@ -21,16 +21,16 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd go
+          cd Go
           go mod download
 
       - name: Verify dependencies
         run: |
-          cd go
+          cd Go
           go mod verify
 
       - name: Run tests
-        run: go test ./...
+        run: go test ./Go/...
 
       - name: Lint code
-        run: golangci-lint run
+        run: golangci-lint run ./Go
