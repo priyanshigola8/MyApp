@@ -44,10 +44,9 @@ jobs:
       env:
         COMPOSER: "composer.json"
       with:
-        php_version: "8"
-        version: 1
-        args: --prefer-dist --no-progress
-  
+        command: php composer-setup.php 
+        args: --install-dir=bin --filename=composer
+        
     # - name: Cache Composer packages
     #   id: composer-cache
     #   uses: actions/cache@v3
