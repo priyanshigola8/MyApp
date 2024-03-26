@@ -25,10 +25,10 @@ jobs:
       run: git clone https://github.com/priyanshigola8/MyApp.git
         
     - name: Change directory
-      run: cd MyApp/php/
+      run: cd priyanshigola8/MyApp/php/
     
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
+      run: composer install --prefer-dist --no-progress 
       
     - name: Validate composer.json and composer.lock
       run: composer validate --strict 
