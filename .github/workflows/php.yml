@@ -20,6 +20,9 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.0'
+
+    - name: Clone repository
+      run: git clone https://github.com/priyanshigola8/MyApp.git
         
     - name: Change directory
       run: cd MyApp/php/
