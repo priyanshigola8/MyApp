@@ -30,7 +30,7 @@ jobs:
     #     php composer-setup.php --install-dir=/usr/local/bin --filename=composer
     #     php -r "unlink('composer-setup.php');"
     - name: Change directory
-      run: cd MyApp/php/
+      run: cd php
       
     # - name: Validate composer.json and composer.lock
     #   run: composer validate --strict 
