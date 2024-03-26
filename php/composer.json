@@ -3,6 +3,6 @@
     "description": "PHP test application",
     "type": "project",
     "require": {
-        "php": "8.0"
+        "php": "8"
     }
 }
