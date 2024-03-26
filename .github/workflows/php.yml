@@ -66,6 +66,8 @@ jobs:
 
     # - name: Install dependencies
     #   run: composer install --prefer-dist --no-progress --no-suggest
+    - name: Install phplangci-lint
+      run: composer require --dev phplang/phplangci-lint
 
     - name: Lint PHP files
       run: vendor/bin/phpcs --standard=PSR12 .
