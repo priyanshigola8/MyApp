@@ -46,7 +46,7 @@ jobs:
       with:
         php_version: '8'
         run: php composer-setup.php --install-dir=bin --filename=composer
-        
+        working_dir: "php"
     # - name: Cache Composer packages
     #   id: composer-cache
     #   uses: actions/cache@v3
