@@ -52,7 +52,8 @@ jobs:
       run: composer require --dev phpunit/phpunit
 
     - name: Run PHPUnit tests
-      run: vendor/bin/phpunit
+      uses: php-actions/phpunit@v3
+      # run: vendor/bin/phpunit
 
     # - name: Check code coverage
     #   run: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml && bash <(curl -s https://codecov.io/bash)
