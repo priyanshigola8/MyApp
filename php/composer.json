@@ -1,0 +1,24 @@
+{
+    "name": "priyanshigola8/MyApp",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "priyanshigola8",
+            "email": "priyanshigola8@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "YourVendorName\\YourProjectName\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "lint": "phpcs --standard=PSR12 src/ tests/"
+    }
+}
