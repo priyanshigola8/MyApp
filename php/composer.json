@@ -1,5 +1,5 @@
 {
-    "name": "priyanshigola8/MyApp",
+    "name": "MyApp/php",
     "type": "project",
     "license": "MIT",
     "authors": [
@@ -9,12 +9,12 @@
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": "8.0",
         "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
-            "priyanshigola8\\MyApp\\": "src/"
+            "MyApp\\php\\": "src/"
         }
     },
     "scripts": {
