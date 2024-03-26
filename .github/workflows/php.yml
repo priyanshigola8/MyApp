@@ -25,7 +25,7 @@ jobs:
       run: git clone https://github.com/priyanshigola8/MyApp.git
         
     - name: Change directory
-      run: cd priyanshigola8/MyApp/php/
+      run: cd MyApp/php/
     
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress 
