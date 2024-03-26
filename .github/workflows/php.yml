@@ -39,6 +39,8 @@ jobs:
     #   run: composer install --prefer-dist --no-progress 
     - name: Install dependencies
       uses: php-actions/composer@v6
+      env:
+        COMPOSER: "composer.json"
       with:
         command: composer install
         args: --prefer-dist --no-progress
