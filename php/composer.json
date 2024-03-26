@@ -1,24 +1,8 @@
 {
-    "name": "MyApp/php",
+    "name": "priyanshigola8/MyApp",
+    "description": "PHP test application",
     "type": "project",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "priyanshigola8",
-            "email": "priyanshigola8@gmail.com"
-        }
-    ],
     "require": {
-        "php": "8.0",
-        "phpunit/phpunit": "^9.5"
-    },
-    "autoload": {
-        "psr-4": {
-            "MyApp\\php\\": "src/"
-        }
-    },
-    "scripts": {
-        "test": "phpunit",
-        "lint": "phpcs --standard=PSR12 src/ tests/"
+        "php": "8.0"
     }
 }
