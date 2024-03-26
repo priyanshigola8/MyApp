@@ -35,18 +35,26 @@ jobs:
       
     # - name: Validate composer.json and composer.lock
     #   run: composer validate --strict 
-      
+
     # - name: Install dependencies
     #   run: composer install --prefer-dist --no-progress 
-    
+      
     - name: Install dependencies
-      uses: php-actions/composer@v6
+      run: |
+        php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+        php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+        php composer-setup.php
+        php -r "unlink('composer-setup.php');"
+    # - name: Install dependencies
+    #   uses: php-actions/composer@v6
       # env:
       #   COMPOSER: "composer.json"
-      with:
-        php_version: '8'
-        command: php composer-setup.php --install-dir=bin --filename=composer
-        working_dir: "php"
+      # with:
+      #   php_version: '8'
+      #   command: php composer-setup.php --install-dir=bin --filename=composer
+      #   working_dir: "php"
+
+      
     # - name: Cache Composer packages
     #   id: composer-cache
     #   uses: actions/cache@v3
