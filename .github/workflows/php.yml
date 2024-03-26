@@ -1,0 +1,41 @@
+name: PHP
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+
+    - name: Lint PHP files
+      run: vendor/bin/phpcs --standard=PSR12 .
+
+    - name: Run PHPUnit tests
+      run: vendor/bin/phpunit
+
+    - name: Check code coverage
+      run: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml && bash <(curl -s https://codecov.io/bash)
+
+    - name: Fail if coding standards or tests are not met
+      run: |
+        if [ $? -ne 0 ]; then
+          echo "Tests or coding standards check failed. Exiting."
+          exit 1
+        fi      
