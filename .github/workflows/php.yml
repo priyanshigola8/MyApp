@@ -21,13 +21,14 @@ jobs:
       with:
         php-version: '8.0'
         
-    # - name: Change directory
-    #   run: cd MyApp/php/
+    - name: Change directory
+      run: cd MyApp/php/
     
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+      
     - name: Validate composer.json and composer.lock
-      run: |
-        cd MyApp/php/
-        composer validate --strict 
+      run: composer validate --strict 
   
     # - name: Cache Composer packages
     #   id: composer-cache
@@ -38,8 +39,8 @@ jobs:
     #     restore-keys: |
     #       ${{ runner.os }}-php-
 
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
+    # - name: Install dependencies
+    #   run: composer install --prefer-dist --no-progress --no-suggest
 
     - name: Lint PHP files
       run: vendor/bin/phpcs --standard=PSR12 .
