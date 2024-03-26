@@ -19,7 +19,7 @@ jobs:
     - name: Set up PHP
       uses: shivammathur/setup-php@v2
       with:
-        php_version: '8'
+        php-version: '8'
 
     # - name: Clone repository
     #   run: git clone https://github.com/priyanshigola8/MyApp.git
@@ -41,11 +41,11 @@ jobs:
     
     - name: Install dependencies
       uses: php-actions/composer@v6
-      env:
-        COMPOSER: "composer.json"
+      # env:
+      #   COMPOSER: "composer.json"
       with:
         php_version: '8'
-        run: php composer-setup.php --install-dir=bin --filename=composer
+        command: php composer-setup.php --install-dir=bin --filename=composer
         working_dir: "php"
     # - name: Cache Composer packages
     #   id: composer-cache
