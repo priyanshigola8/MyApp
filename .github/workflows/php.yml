@@ -22,7 +22,7 @@ jobs:
         php-version: '8.0'
 
     - name: Validate composer.json and composer.lock
-      run: composer validate --strict
+      run: composer validate --strict -d /MyApp/blob/main/php/composer.json
   
     - name: Cache Composer packages
       id: composer-cache
