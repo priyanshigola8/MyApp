@@ -44,7 +44,7 @@ jobs:
       env:
         COMPOSER: "composer.json"
       with:
-        php-version: '8'
+        php_version: '8'
         command: php composer-setup.php 
         args: --install-dir=bin --filename=composer
         
