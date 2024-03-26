@@ -23,21 +23,25 @@ jobs:
 
     # - name: Clone repository
     #   run: git clone https://github.com/priyanshigola8/MyApp.git
-    - name: Install Composer
-      run: |
-        php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-        php -r "if (hash_file('sha384', 'composer-setup.php') === 'c3d752b0f12e3e7b751b36f5f99aad72a1d65939534bcd1501f078bd3ad070bcd06179dfeb07f7e9aeb6cb5c48d077ef') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); exit(1); } echo PHP_EOL;"
-        php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-        php -r "unlink('composer-setup.php');"
+    # - name: Install Composer
+    #   run: |
+    #     php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    #     php -r "if (hash_file('sha384', 'composer-setup.php') === 'c3d752b0f12e3e7b751b36f5f99aad72a1d65939534bcd1501f078bd3ad070bcd06179dfeb07f7e9aeb6cb5c48d077ef') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); exit(1); } echo PHP_EOL;"
+    #     php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+    #     php -r "unlink('composer-setup.php');"
     - name: Change directory
       run: cd MyApp/php/
       
     # - name: Validate composer.json and composer.lock
     #   run: composer validate --strict 
       
+    # - name: Install dependencies
+    #   run: composer install --prefer-dist --no-progress 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress 
-
+      uses: php-actions/composer@v6
+      with:
+        command: composer install
+        args: --prefer-dist --no-progress
   
     # - name: Cache Composer packages
     #   id: composer-cache
