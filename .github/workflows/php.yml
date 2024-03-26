@@ -20,57 +20,33 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8'
-
-    # - name: Clone repository
-    #   run: git clone https://github.com/priyanshigola8/MyApp.git
-    # - name: Install Composer
-    #   run: |
-    #     php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-    #     php -r "if (hash_file('sha384', 'composer-setup.php') === 'c3d752b0f12e3e7b751b36f5f99aad72a1d65939534bcd1501f078bd3ad070bcd06179dfeb07f7e9aeb6cb5c48d077ef') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); exit(1); } echo PHP_EOL;"
-    #     php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-    #     php -r "unlink('composer-setup.php');"
     
     - name: Change directory
       run: cd php
-      
-    # - name: Validate composer.json and composer.lock
-    #   run: composer validate --strict 
 
-    # - name: Install dependencies
-    #   run: composer install --prefer-dist --no-progress 
-      
     - name: Install dependencies
       run: |
         php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
         php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
         php composer-setup.php
         php -r "unlink('composer-setup.php');"
-    # - name: Install dependencies
-    #   uses: php-actions/composer@v6
-      # env:
-      #   COMPOSER: "composer.json"
-      # with:
-      #   php_version: '8'
-      #   command: php composer-setup.php --install-dir=bin --filename=composer
-      #   working_dir: "php"
+  
+  phplint:
+    runs-on: ubuntu-latest
+    name: PHP Lint
+    steps:
+    - uses: actions/checkout@v2
+    - id: PHP-Lint
+      uses: J3-Tech/PHP-Lint-Action@v0.0.5
+      with:
+        path: .
+        exclude: vendor
+        
+    # - name: Install phplangci-lint
+    #   run: composer require --dev phplang/phplangci-lint
 
-      
-    # - name: Cache Composer packages
-    #   id: composer-cache
-    #   uses: actions/cache@v3
-    #   with:
-    #     path: vendor
-    #     key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-    #     restore-keys: |
-    #       ${{ runner.os }}-php-
-
-    # - name: Install dependencies
-    #   run: composer install --prefer-dist --no-progress --no-suggest
-    - name: Install phplangci-lint
-      run: composer require --dev phplang/phplangci-lint
-
-    - name: Lint PHP files
-      run: vendor/bin/phpcs --standard=PSR12 .
+    # - name: Lint PHP files
+    #   run: vendor/bin/phpcs --standard=PSR12 .
 
     - name: Run PHPUnit tests
       run: vendor/bin/phpunit
